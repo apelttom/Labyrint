@@ -1,4 +1,11 @@
 # depslib dependency file v1.0
-1402276745 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\main.cpp
+1402435904 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\main.cpp
 	<iostream>
+	<winbgim.h>
+
+1099889724 c:\program files (x86)\codeblocks\mingw\winbgim.h
+	<stddef.h>
+	<conio.h>
+	<windows.h>
+	<string.h>
 

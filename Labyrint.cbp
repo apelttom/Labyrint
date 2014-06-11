@@ -35,11 +35,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
 		</Compiler>
+		<ResourceCompiler>
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
+		</ResourceCompiler>
+		<Linker>
+			<Add option="-lbgi -lgdi32 -luser32" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\libbgi.a" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
+		</Linker>
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
