@@ -1,6 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-
+#include <iostream>
 #include "Node.h"
 #include <stdexcept>
 using namespace std;
@@ -110,6 +110,19 @@ class LinkedList
             Node <E> * tmp = current -> next;
             return tmp->element;
         }
+
+        E getElementInPos (int pos)
+        {
+            current = head;
+            for (int i = 0; i < pos; i++)
+            {
+                if (i == pos)
+                {
+                    return current->getElement();
+                }
+            }
+        }
+
         // Mueve la posición actual al inicio de la lista
         void goToStart()
         {

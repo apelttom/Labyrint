@@ -1,33 +1,38 @@
 #ifndef ARISTA_H
 #define ARISTA_H
+#include <iostream>
 #include "Vertice.h"
+
+using namespace std;
 
 template <typename E>
 class Arista
 {
     private:
-        Vertice origen;
-        Vertice destino;
+        Vertice <E> origen;
+        Vertice <E> destino;
 
     public:
-        Arista() {}
-        Arista(Vertice ori, Vertice dest)
+
+        Arista(Vertice<E> ori, Vertice<E> dest)
         {
             origen = ori;
             destino = dest;
         }
 
-        Vertice setOrigen(Vertice ori)
+        Arista() {}
+
+        Vertice<E> setOrigen(Vertice<E> ori)
         {
             origen = ori;
         }
 
         void getOrigen()
         {
-            return destino;
+            return origen;
         }
 
-        Vertice setDestino(Vertice vert)
+        E setDestino(Vertice<E> vert)
         {
             destino = vert;
         }
@@ -39,8 +44,9 @@ class Arista
 
         void imprimir()
         {
-            cout << origen << " -> " << destino endl;
+            cout << origen << " -> " << destino << endl;
         }
+
 
         ~Arista() {}
 };

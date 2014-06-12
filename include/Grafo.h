@@ -2,36 +2,41 @@
 #define GRAFO_H
 #include "Vertice.h"
 #include "Arista.h"
+#include "LinkedList.h"
+#include <iostream>
 
 template <typename E>
 class Grafo
 {
     private:
         int cantVertices;
-        LinkedList <Vertice> * vertices;
-        LinkedList <Arista> * aristas;
+        LinkedList <E> * vertices;
+        LinkedList <E> * aristas;
         int tamano;
         int cantAristas;
 
     public:
-        Grafo() {}
+        Grafo()
+        {
+
+        }
         Grafo (int tam)
         {
-            vertices = new LinkedList();
-            aristas = new LinkedList();
+            vertices = new LinkedList<E>();
+            aristas = new LinkedList<E>();
             tamano = tam;
             cantVertices = 0;
             cantAristas = 0;
         }
-
+        /*
         Grafo ()
         {
-            vertices = new LinkedList();
-            aristas = new LinkedList();
+            vertices = new LinkedList<E>();
+            aristas = new LinkedList<E>();
             tamano = 0;
             cantVertices = 0;
             cantAristas = 0;
-        }
+        }*/
 
         ~Grafo() {}
 
@@ -50,45 +55,49 @@ class Grafo
             return cantVertices;
         }
 
-        Vertice insertarVertice(Vertice vert)
+        E insertarVertice(Vertice<E> vert)
         {
             vertices.insert(vert);
             tamano ++;
+            cantVertices++;
         }
 
-        Vertice agregarVertice (E dato)
+        void agregarVertice (E dato)
         {
-            Vertice vert = new Vertice(dato);
-            vertices.insert(vert);
+            Vertice<int> * vert = new Vertice<E>(dato);
+            vertices.append(vert);
+            cantVertices++;
+            tamano++;
         }
 
-        Vertice eliminarVertice(Vertice vert)
+        E eliminarVertice(Vertice<E> vert)
         {
             vertices.remove(vert);
             tamano--;
+            cantVertices--;
         }
 
-        Arista agregarArista(Vertice origen, Vertice dest)
+        void agregarArista(Vertice<E> origen, Vertice<E> dest)
         {
             if (vertices.buscar(origen) =! true)
             {
                 if (vertices.buscar(dest) =! true)
                 {
-                    Arista ar = new Arista(origen, dest);
+                    Arista<E> ar = new Arista<E>(origen, dest);
                     aristas.insert(ar);
                     cantAristas++;
                 }
                 else
-                    return "No hay destino valido";
+                    cout << "No hay destino valido" << endl;
             }
             else
-                return "No hay origen valido";
+                cout << "No hay origen valido" << endl;
         }
 
-        Arista eliminarArista(Arista ar)
+        E eliminarArista(Arista<E> ar)
         {
-            Vertice origen = ar.getOrigen();
-            Vertice dest = ar.getDestino();
+            Vertice<E> origen = ar.getOrigen();
+            Vertice<E> dest = ar.getDestino();
             if (vertices.buscar(origen) =! true)
             {
                 if (vertices.buscar(dest) =! true)
@@ -103,11 +112,29 @@ class Grafo
                 return "No hay origen valido";
         }
 
+        void obtenerVecinos(Vertice <E> origen)
+        {
+            Vertice<E> * tmpVerD;
+            Vertice<E> * tmpVerO;
+            LinkedList <E> * vecinos = new LinkedList<E>();
+            for (int i = 0; i < cantAristas; i++)
+            {
+                Arista<E> * tmpAr = aristas.getElementInPos(i);
+                tmpVerD = tmpAr.getDestino();
+                tmpVerO = tmpAr.getOrigen();
+                if (origen == tmpVerO)
+                {
+                    vecinos.insert(tmpVerD);
+                }
+            }
+            return imprimirLista(vecinos);
+        }
+
         void imprimirListAd()
         {
             for (int i = 0; i < cantVertices; i++)
             {
-
+                cout << vertices.getElementInPos(i) << obtenerVecinos(vertices.getElementInPos(i));
             }
         }
 

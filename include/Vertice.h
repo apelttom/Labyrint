@@ -1,5 +1,6 @@
 #ifndef VERTICE_H
 #define VERTICE_H
+#include <iostream>
 
 template <typename E>
 class Vertice
