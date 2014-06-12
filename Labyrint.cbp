@@ -13,10 +13,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
 				</Compiler>
 				<Linker>
 					<Add option="-lbgi -lgdi32 -luser32" />
-					<Add library="C:\MyPrograms\CodeBlocks\MinGW\lib\libbgi.a" />
+					<Add library="C:\Program Files (x86)\CodeBlocks\libbgi.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -26,6 +28,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -45,6 +48,10 @@
 			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\libbgi.a" />
 			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
 		</Linker>
+		<Unit filename="include/Gnode.h" />
+		<Unit filename="include/Grafo.h" />
+		<Unit filename="include/LinkedList.h" />
+		<Unit filename="include/Node.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

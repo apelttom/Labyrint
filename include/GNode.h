@@ -1,9 +1,20 @@
+#ifndef GNODE_H
+#define GNODE_H
 
-class GNode
+template <typename E>
+template <typename K>
+class Gnode
 {
     public:
-        GNode();
-        virtual ~GNode();
+        E element;
+        K key;
+
+        Gnode() {}
+        virtual ~Gnode() {}
+
+
     protected:
     private:
 };
+
+#endif // GNODE_H

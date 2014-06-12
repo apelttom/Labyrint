@@ -1,13 +1,13 @@
 #include <iostream>
-//#include <winbgim.h>
+#include <winbgim.h>
 
 using namespace std;
 
 int main()
 {
     cout << "Labyrint application" << endl;
-    //initwindow (600,400);
-    //getch();
-    //closegraph();
+    initwindow (600,400);
+    getch();
+    closegraph();
     return 0;
 }

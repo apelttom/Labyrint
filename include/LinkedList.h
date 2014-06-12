@@ -60,6 +60,18 @@ class LinkedList
             tail = tail->next;
             size++;
         }
+
+        //Busca un elemento en la lista
+        void buscar(E ele)
+        {
+            for (current = head; current =! tail || current->getElement() =! ele; current ->next)
+            {
+                if (current->getElement() == ele)
+                {
+                    return true;
+                }
+            }
+        }
         // Elimina el elemento actual, si no hay elemento levanta una excepción
         E remove() throw(runtime_error)
         {
