@@ -1,9 +1,8 @@
 # depslib dependency file v1.0
-1402641362 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\main.cpp
+1402642800 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\main.cpp
 	<iostream>
 	<winbgim.h>
-	"Grafo.h"
-	"LinkedList.h"
+	"GrafoController.h"
 
 1099889724 c:\program files (x86)\codeblocks\mingw\winbgim.h
 	<stddef.h>
@@ -11,7 +10,7 @@
 	<windows.h>
 	<string.h>
 
-1402641212 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafo.h
+1402642939 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafo.h
 	"Vertice.h"
 	"Arista.h"
 	"LinkedList.h"
@@ -30,4 +29,8 @@
 	<stdexcept>
 
 1398722525 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\node.h
+
+1402642886 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafocontroller.h
+	"Grafo.h"
+	"Vertice.h"
 

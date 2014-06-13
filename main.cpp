@@ -1,7 +1,6 @@
 #include <iostream>
 #include <winbgim.h>
-#include "Grafo.h"
-#include "LinkedList.h"
+#include "GrafoController.h"
 
 
 using namespace std;
@@ -11,18 +10,18 @@ int main()
     cout << "Labyrint application" << endl;
 
     //prueba grafos
-    Grafo <int> * g = new Grafo<int>(0);
-    int dim = 3;
-    for (int i = 1; i <= (dim*dim); i++)
-    {
-        g->agregarVertice(i);
-    }
+    int dim = 0;
+    cout << "Digite la dimension que desea para el laberinto " << endl;
+    cin >> dim;
+
+    GrafoController * controller = new GrafoController();
+    controller->inicializarGrafo(dim);
     /*g->agregarVertice(1);
     g->agregarVertice(2);
     g->agregarVertice(3);
     g->agregarVertice(4);
     */
-    g->llenarGrafo(dim);
+    //g->llenarGrafo(dim);
     /*
     g->agregarArista(1, 2);
     g->agregarArista(2, 3);
@@ -31,9 +30,7 @@ int main()
     g->agregarArista(2, 4);
     g->agregarArista(4, 4);
     */
-    //cout << "el tamano es " << g->getTamano() << endl;
-    cout << "la lista de adyacencia es: " << endl;
-    g->imprimirListAd();
+
 
     //ventana
     initwindow (600,400);

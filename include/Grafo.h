@@ -16,10 +16,6 @@ class Grafo
         int cantAristas;
 
     public:
-        Grafo()
-        {
-
-        }
         Grafo (int tam)
         {
             vertices = new LinkedList<Vertice<E> >();
@@ -28,15 +24,15 @@ class Grafo
             cantVertices = 0;
             cantAristas = 0;
         }
-        /*
+
         Grafo ()
         {
-            vertices = new LinkedList<E>();
-            aristas = new LinkedList<E>();
+            vertices = new LinkedList<Vertice<E> >();
+            aristas = new LinkedList<Arista<E> >();
             tamano = 0;
             cantVertices = 0;
             cantAristas = 0;
-        }*/
+        }
 
         ~Grafo() {}
 
@@ -156,25 +152,6 @@ class Grafo
                 LinkedList<Vertice<E> > * vecinos = obtenerVecinos(vertices->getElementInPos(i));
                 LinkedList<Vertice<E> >::imprimirLista(vecinos);
                 cout << endl;
-            }
-        }
-
-        void llenarGrafo(int dim)
-        {
-            for (int i = 0; i < vertices->getSize(); i++)
-            {
-                Vertice <E> tmp = vertices->getElementInPos(i);
-                int x = tmp.getValor();
-                if (x % dim != 0)
-                {
-                    agregarArista(x, (x+1));
-                    agregarArista((x+1), x);
-                }
-                if ((x+dim) <= (dim*dim))
-                {
-                    agregarArista(x, (x+dim));
-                    agregarArista((x+dim), x);
-                }
             }
         }
 
