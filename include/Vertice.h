@@ -17,7 +17,7 @@ class Vertice
             visitado = false;
         }
 
-        E getValor()
+        E getValor() const
         {
             return valor;
         }
@@ -27,12 +27,42 @@ class Vertice
             valor = v;
         }
 
-        bool getEstado()
+        bool getEstado() const
         {
             return visitado;
         }
         virtual ~Vertice() {}
 
+bool operator != (const Vertice& v) const {
+    if(valor != v.getValor()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool operator == (const Vertice& v) const {
+    if(valor == v.getValor()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool operator < (const Vertice& v) const {
+  if(valor < v.getValor()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 };
+
+template <typename E>
+std::ostream& operator<<(std::ostream &strm, const Vertice<E> &v) {
+  return strm << "Vertice(" << "Valor = " << v.getValor() << ")";
+}
+
 
 #endif // VERTICE_H

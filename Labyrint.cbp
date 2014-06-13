@@ -48,10 +48,11 @@
 			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\libbgi.a" />
 			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
 		</Linker>
-		<Unit filename="include/Gnode.h" />
+		<Unit filename="include/Arista.h" />
 		<Unit filename="include/Grafo.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Node.h" />
+		<Unit filename="include/Vertice.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

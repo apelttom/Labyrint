@@ -62,15 +62,18 @@ class LinkedList
         }
 
         //Busca un elemento en la lista
-        void buscar(E ele)
+        bool buscar(E ele)
         {
-            for (current = head; current =! tail || current->getElement() =! ele; current ->next)
+            Node <E> * tmp;
+            for (tmp = head; tmp->next != tail; tmp = tmp->next)
             {
-                if (current->getElement() == ele)
+                cout<< tmp->next->element << endl;
+                if (tmp->next->element == ele)
                 {
                     return true;
                 }
             }
+            return false;
         }
         // Elimina el elemento actual, si no hay elemento levanta una excepción
         E remove() throw(runtime_error)
@@ -111,15 +114,22 @@ class LinkedList
             return tmp->element;
         }
 
-        E getElementInPos (int pos)
+        E getElementInPos (int pos) throw(runtime_error)
         {
-            current = head;
-            for (int i = 0; i < pos; i++)
+            //CHeck if pos is in range of list
+            if ( (pos < 0) ||  (pos > size) )
+            {
+                throw runtime_error("No element to get.");
+            }
+
+            Node <E> * tmp = head;
+            for (int i = 0; i < size; i++)
             {
                 if (i == pos)
                 {
-                    return current->getElement();
+                    return tmp->next->element;
                 }
+                tmp = tmp->next;
             }
         }
 
@@ -190,12 +200,12 @@ class LinkedList
             return size;
         }
 
-        void imprimirLista(LinkedList* lista)
+        static void imprimirLista(LinkedList* lista)
         {
             lista->goToStart();
             for (int i = 0; lista->getPos() < lista->getSize(); lista->next())
             {
-                cout << i++ << ". " << lista->getElement() << endl;
+                cout << lista->getElement() << ", ";
             }
         }
 };

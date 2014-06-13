@@ -22,22 +22,22 @@ class Arista
 
         Arista() {}
 
-        Vertice<E> setOrigen(Vertice<E> ori)
+        void setOrigen(Vertice<E> ori)
         {
             origen = ori;
         }
 
-        void getOrigen()
+        Vertice <E> getOrigen() const
         {
             return origen;
         }
 
-        E setDestino(Vertice<E> vert)
+        void setDestino(Vertice<E> vert)
         {
             destino = vert;
         }
 
-        void getDestino()
+        Vertice <E> getDestino() const
         {
             return destino;
         }
@@ -50,5 +50,10 @@ class Arista
 
         ~Arista() {}
 };
+
+template <typename E>
+std::ostream& operator<<(std::ostream &strm, const Arista<E> &a) {
+  return strm << "Arista(" << "Origen = " << a.getOrigen() << "Destino = " << a.getDestino() << ")";
+}
 
 #endif // ARISTA_H

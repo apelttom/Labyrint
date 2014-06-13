@@ -16,11 +16,13 @@ int main()
     g->agregarVertice(2);
     g->agregarVertice(3);
     g->agregarVertice(4);
+
     g->agregarArista(1, 2);
     g->agregarArista(2, 3);
     g->agregarArista(3, 4);
     g->agregarArista(1,3);
     g->agregarArista(2, 4);
+    g->agregarArista(4, 4);
     //cout << "el tamano es " << g->getTamano() << endl;
     cout << "la lista de adyacencia es: " << endl;
     g->imprimirListAd();
