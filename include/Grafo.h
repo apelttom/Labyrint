@@ -159,6 +159,25 @@ class Grafo
             }
         }
 
+        void llenarGrafo(int dim)
+        {
+            for (int i = 0; i < vertices->getSize(); i++)
+            {
+                Vertice <E> tmp = vertices->getElementInPos(i);
+                int x = tmp.getValor();
+                if (x % dim != 0)
+                {
+                    agregarArista(x, (x+1));
+                    agregarArista((x+1), x);
+                }
+                if ((x+dim) <= (dim*dim))
+                {
+                    agregarArista(x, (x+dim));
+                    agregarArista((x+dim), x);
+                }
+            }
+        }
+
     private:
 };
 

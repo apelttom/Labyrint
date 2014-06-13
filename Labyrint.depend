@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1402639511 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\main.cpp
+1402641362 source:c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\main.cpp
 	<iostream>
 	<winbgim.h>
 	"Grafo.h"
@@ -11,7 +11,7 @@
 	<windows.h>
 	<string.h>
 
-1402639602 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafo.h
+1402641212 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafo.h
 	"Vertice.h"
 	"Arista.h"
 	"LinkedList.h"
