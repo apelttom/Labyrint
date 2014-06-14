@@ -2,6 +2,9 @@
 #define GRAFOCONTROLLER_H
 #include "Grafo.h"
 #include "Vertice.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 class GrafoController
 {
@@ -27,11 +30,14 @@ class GrafoController
                 laberinto->agregarVertice(i);
             }
             llenarGrafo(dim);
-            cout << "la lista de adyacencia es: " << endl;
+            //cout << "la lista de adyacencia es: " << endl;
             //grafoLleno->imprimirListAd();
             vertices = grafoLleno->getVertices();
             visitados = new LinkedList<Vertice<int> >();
             cout << "se lleno el grafo" << endl;
+            DFS();
+            cout << "se lleno el segundo grafo" << endl;
+            laberinto->imprimirListAd();
         }
 
         void llenarGrafo(int dim)
@@ -53,41 +59,121 @@ class GrafoController
             }
         }
 
-        void DFS(Grafo g)
+        void DFS()
         {
             int n = 0;
-            Vertice <int> * vertice1;
+            Vertice <int> vertice1;
             vertice1 = vertices->getElementInPos(n);
-            vertice1->setVisit();
+            vertice1.setVisit();
             visitados->insert(vertice1);
             n++;
-            DFSRec(vertice1);
+            DFSRec(vertice1, n);
+            cout << "Despues de DFSREC" << endl;
         }
 
-        void DFSRec(Vertice <int> * vertice1, int n)
+        void DFSRec(Vertice <int> vertice1, int n)
         {
+            cout << "Entro a DFSREC" << endl;
             vecinos = obtenerListaNoVisit(vertice1);
-            Vertice <int> * vertice2;
-            vertice2 = obtenerAzar(vecinos);
-            vertice2->setVisit();
-            laberinto->agregarArista(vertice1, vertice2);
-            laberinto->agregarArista(vertice2, vertice1);
-            vertice1 = vertice2;
-            n++;
-            if (n < vertices->getSize())
+            Vertice <int> vertice2;
+            if (vecinos->getSize() > 0)
             {
-                DFSRec(vertice1, n)
+                cout << "Entro a if de DFSREC" << endl;
+                vertice2 = obtenerAzar(vecinos);
+                vertice2.setVisit();
+                laberinto->agregarArista(vertice1.getValor(), vertice2.getValor());
+                laberinto->agregarArista(vertice2.getValor(), vertice1.getValor());
+                vertice1 = vertice2;
+                n++;
+                if (n < vertices->getSize())
+                {
+                    DFSRec(vertice1, n);
+                }
             }
         }
 
-        LinkedList <Vertice<int> > * obtenerListaNoVisit(Vertice<int> * ve, LinkedList <Vertice<int> > * todosVec)
+        LinkedList <Vertice<int> > * obtenerListaNoVisit(Vertice<int> ve /*, LinkedList <Vertice<int> > * todosVec*/)
         {
-
+            LinkedList <Vertice <int> > * tmp;
+            tmp = grafoLleno->obtenerVecinos(ve);
+            LinkedList <Vertice<int> > * noVisitados = new LinkedList<Vertice<int> >();
+            if (tmp->getSize() == 0)
+            {
+                return noVisitados;
+            }
+            else
+            {
+                for (int i = 0; i < tmp->getSize(); i++)
+                {
+                    Vertice<int> vertmp;
+                    vertmp = tmp->getElementInPos(i);
+                    if(vertmp.getEstado() == false)
+                    {
+                        noVisitados->append(vertmp);
+                    }
+                }
+            }
+            delete tmp;
+            return noVisitados;
         }
 
         Vertice<int> obtenerAzar(LinkedList <Vertice<int> > * vecinos)
         {
+            Vertice<int> vertice;
+            if (vecinos->getSize() == 1)
+            {
+                return vecinos->getElementInPos(0);
+            }
+            else
+            {
+                if (vecinos->getSize() == 2)
+                {
+                    int prob = getRandom();
+                    if (prob < 50)
+                    {
+                        vertice = vertices->getElementInPos(0);
+                        return vertice;
+                    }
+                    else
+                    {
+                        vertice = vertices->getElementInPos(1);
+                        return vertice;
+                    }
+                }
+                else
+                {
+                    if (vecinos->getSize() == 3)
+                    {
+                        int prob = getRandom();
+                        if (prob <= 33)
+                        {
+                            vertice = vertices->getElementInPos(0);
+                            return vertice;
+                        }
+                        else
+                        {
+                            if (prob <= 66)
+                            {
+                                vertice = vertices->getElementInPos(1);
+                                return vertice;
+                            }
+                            else
+                            {
+                                vertice = vertices->getElementInPos(2);
+                                return vertice;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
+        int getRandom()
+        {
+            int  i;
+            srand(time(NULL));
+            i = (1 + (rand() % 100));
+            return i;
         }
 
         /*

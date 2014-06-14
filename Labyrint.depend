@@ -16,7 +16,7 @@
 	"LinkedList.h"
 	<iostream>
 
-1402648427 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\vertice.h
+1402705162 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\vertice.h
 	<iostream>
 
 1402637512 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\arista.h
@@ -30,7 +30,10 @@
 
 1398722525 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\node.h
 
-1402698691 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafocontroller.h
+1402732810 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafocontroller.h
 	"Grafo.h"
 	"Vertice.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
 
