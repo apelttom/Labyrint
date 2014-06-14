@@ -50,6 +50,7 @@
 		</Linker>
 		<Unit filename="include/Arista.h" />
 		<Unit filename="include/Grafo.h" />
+		<Unit filename="include/GrafoController.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Vertice.h" />

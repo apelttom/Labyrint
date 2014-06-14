@@ -31,6 +31,16 @@ class Vertice
         {
             return visitado;
         }
+
+        void setVisit()
+        {
+            visitado = true;
+        }
+
+        void resetVisit()
+        {
+            visitado = false;
+        }
         virtual ~Vertice() {}
 
 bool operator != (const Vertice& v) const {
