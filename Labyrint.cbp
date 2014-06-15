@@ -13,12 +13,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
-					<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
 				</Compiler>
 				<Linker>
 					<Add option="-lbgi -lgdi32 -luser32" />
-					<Add library="C:\Program Files (x86)\CodeBlocks\libbgi.a" />
+					<Add library="C:\MyPrograms\CodeBlocks\MinGW\lib\libbgi.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -38,19 +36,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
 		</Compiler>
-		<ResourceCompiler>
-			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
-		</ResourceCompiler>
-		<Linker>
-			<Add option="-lbgi -lgdi32 -luser32" />
-			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\libbgi.a" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW" />
-		</Linker>
 		<Unit filename="include/Arista.h" />
 		<Unit filename="include/Grafo.h" />
 		<Unit filename="include/GrafoController.h" />
+		<Unit filename="include/GraphPrinter.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Vertice.h" />
