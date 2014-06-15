@@ -1,4 +1,6 @@
+
 #include <iostream>
+#include "Grafo.h"
 #include "GrafoController.h"
 #include "GraphPrinter.h"
 

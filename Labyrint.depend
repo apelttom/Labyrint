@@ -37,39 +37,40 @@
 	<stdlib.h>
 	<time.h>
 
-1402804336 source:c:\myprogramming\labyrint\main.cpp
+1402806704 source:c:\myprogramming\labyrint\main.cpp
 	<iostream>
-	"GrafoController.h"
-	"GraphPrinter.h"
+	"include\Grafo.h"
+	"include\GrafoController.h"
+	"include\GraphPrinter.h"
 
-1402801695 c:\myprogramming\labyrint\include\grafocontroller.h
+1402806184 c:\myprogramming\labyrint\include\grafocontroller.h
 	"Grafo.h"
 	"Vertice.h"
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 
-1402801695 c:\myprogramming\labyrint\include\grafo.h
+1402806184 c:\myprogramming\labyrint\include\grafo.h
 	"Vertice.h"
 	"Arista.h"
 	"LinkedList.h"
 	<iostream>
 
-1402801695 c:\myprogramming\labyrint\include\vertice.h
+1402806184 c:\myprogramming\labyrint\include\vertice.h
 	<iostream>
 
-1402801695 c:\myprogramming\labyrint\include\arista.h
+1402806184 c:\myprogramming\labyrint\include\arista.h
 	<iostream>
 	"Vertice.h"
 
-1402801695 c:\myprogramming\labyrint\include\linkedlist.h
+1402806184 c:\myprogramming\labyrint\include\linkedlist.h
 	<iostream>
 	"Node.h"
 	<stdexcept>
 
-1402599680 c:\myprogramming\labyrint\include\node.h
+1402806184 c:\myprogramming\labyrint\include\node.h
 
-1402804311 c:\myprogramming\labyrint\include\graphprinter.h
+1402806750 c:\myprogramming\labyrint\include\graphprinter.h
 	<winbgim.h>
 	"Grafo.h"
 
