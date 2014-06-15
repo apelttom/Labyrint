@@ -1,6 +1,6 @@
 #include <iostream>
-#include <winbgim.h>
 #include "GrafoController.h"
+#include "GraphPrinter.h"
 
 
 using namespace std;
@@ -31,10 +31,13 @@ int main()
     g->agregarArista(4, 4);
     */
 
+    GraphPrinter *  printer = new GraphPrinter();
+    printer->drawGraph(NULL);
+    delete printer;
 
     //ventana
-    initwindow (600,400);
-    getch();
-    closegraph();
+    //initwindow (600,400);
+    //getch();
+    //closegraph();
     return 0;
 }
