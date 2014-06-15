@@ -1,9 +1,8 @@
 
 #include <iostream>
-#include "Grafo.h"
-#include "GrafoController.h"
-#include "GraphPrinter.h"
-
+#include "include/Grafo.h"
+#include "include/GrafoController.h"
+#include "include/GraphDrawer.h"
 
 using namespace std;
 
@@ -33,13 +32,14 @@ int main()
     g->agregarArista(4, 4);
     */
 
-    GraphPrinter *  printer = new GraphPrinter();
-    printer->drawGraph(NULL);
+    GraphDrawer *  printer = new GraphDrawer();
+    printer->drawGraph(dim, controller->getGrafoLleno());
     delete printer;
 
     //ventana
-    //initwindow (600,400);
-    //getch();
-    //closegraph();
+//    initwindow (600,400);
+//    rectangle(0,0,20,20);
+//    getch();
+//    closegraph();
     return 0;
 }

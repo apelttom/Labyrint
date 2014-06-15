@@ -22,6 +22,11 @@ class GrafoController
         }
         ~GrafoController() {}
 
+        Grafo <int> * getGrafoLleno() const
+        {
+            return grafoLleno;
+        }
+
         void inicializarGrafo(int dim)
         {
             for (int i = 1; i <= (dim*dim); i++)
