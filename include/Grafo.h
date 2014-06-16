@@ -96,7 +96,7 @@ class Grafo
                     Arista<E> * ar = new Arista<E>(*origenP, *destP);
                     aristas->append(*ar);
                     cantAristas++;
-                    cout << "Se agrego en la lista" << endl;
+                    cout << "Se agrego Arista" << endl;
              //   }
            //     else
           //          cout << "No hay destino valido" << endl;

@@ -73,19 +73,27 @@ class GrafoController
 
         void DFSRec(Vertice <int> vertice1, int n)
         {
+            cout<< "**********************************************" << endl;
             cout << "Entro a DFSREC" << endl;
             vecinos = obtenerListaNoVisit(vertice1);
+            LinkedList<Vertice<int> >::imprimirLista(vecinos);
+            cout << " " << endl;
             Vertice <int> vertice2;
             if (vecinos->getSize() > 0)
             {
-                cout << "Entro a if de DFSREC" << endl;
+                cout << "Entro a if Recursivo" << endl;
                 vertice2 = obtenerAzar(vecinos);
                 vertice2.setVisit();
+                cout << "valor al inicio" << vertice1.getValor() << endl;
+                cout << "valor al inicio" << vertice2.getValor() << endl;
                 laberinto->agregarArista(vertice1.getValor(), vertice2.getValor());
-                laberinto->agregarArista(vertice2.getValor(), vertice1.getValor());
-                vertice1 = vertice2;
+                //laberinto->agregarArista(vertice2.getValor(), vertice1.getValor());
+                //LinkedList<Vertice<int> >::imprimirLista(vecinos);
+                vertice1.setValor(vertice2.getValor());
+                vertice1.resetVisit();
+                cout << "Al final vertice uno es: " << vertice1.getValor() << " - " << vertice2.getValor() << endl;
                 n++;
-                if (n < vertices->getSize())
+                if (n < (vertices->getSize()-1))
                 {
                     DFSRec(vertice1, n);
                 }
@@ -122,31 +130,37 @@ class GrafoController
             Vertice<int> vertice;
             if (vecinos->getSize() == 1)
             {
+                cout << "   llegue con 1" << endl;
                 return vecinos->getElementInPos(0);
             }
             else
             {
                 if (vecinos->getSize() == 2)
                 {
+                    cout << "   llegue con 2" << endl;
                     int prob = getRandom();
                     if (prob < 50)
                     {
+                        cout << "       llegue con 2.1" << endl;
                         vertice = vertices->getElementInPos(0);
                         return vertice;
                     }
                     else
                     {
+                        cout << "       llegue con 2.2" << endl;
                         vertice = vertices->getElementInPos(1);
                         return vertice;
                     }
                 }
                 else
                 {
+                    cout << "   llegue con 3" << endl;
                     if (vecinos->getSize() == 3)
                     {
                         int prob = getRandom();
                         if (prob <= 33)
                         {
+                            cout << "       llegue con 3.1" << endl;
                             vertice = vertices->getElementInPos(0);
                             return vertice;
                         }
@@ -154,11 +168,13 @@ class GrafoController
                         {
                             if (prob <= 66)
                             {
+                                cout << "       llegue con 3.2" << endl;
                                 vertice = vertices->getElementInPos(1);
                                 return vertice;
                             }
                             else
                             {
+                                cout << "       llegue con 2" << endl;
                                 vertice = vertices->getElementInPos(2);
                                 return vertice;
                             }
@@ -173,6 +189,7 @@ class GrafoController
             int  i;
             srand(time(NULL));
             i = (1 + (rand() % 100));
+            cout << i << endl;
             return i;
         }
 

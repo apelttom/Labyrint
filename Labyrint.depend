@@ -10,7 +10,7 @@
 	<windows.h>
 	<string.h>
 
-1402642939 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafo.h
+1402737636 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafo.h
 	"Vertice.h"
 	"Arista.h"
 	"LinkedList.h"
@@ -30,7 +30,7 @@
 
 1398722525 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\node.h
 
-1402732810 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafocontroller.h
+1402789605 c:\users\mora uma\documents\felipe\tec\primer semestre 2014\datos\proyectos\labyrint\include\grafocontroller.h
 	"Grafo.h"
 	"Vertice.h"
 	<stdio.h>
