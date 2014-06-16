@@ -14,6 +14,7 @@ class GrafoController
         LinkedList <Vertice <int> > * vertices;
         LinkedList<Vertice<int> > * vecinos;
         LinkedList<Vertice<int> > * visitados;
+        LinkedList<Vertice<int> > * visitadosDeVerdad;
     public:
         GrafoController()
         {
@@ -43,10 +44,11 @@ class GrafoController
             //cout << "la lista de adyacencia es: " << endl;
             //grafoLleno->imprimirListAd();
             vertices = grafoLleno->getVertices();
+            visitadosDeVerdad = new LinkedList<Vertice<int> >();
             visitados = new LinkedList<Vertice<int> >();
             cout << "se lleno el grafo" << endl;
-            DFS();
-            //llenarLaberinto(0);
+            //DFS();
+            llenarLaberinto(dim);
             cout << "se lleno el segundo grafo" << endl;
             cout << "listo" << endl;
             laberinto->imprimirListAd();
@@ -71,19 +73,29 @@ class GrafoController
             }
         }
 
-        void llenarLaberinto(int n)
+        void llenarLaberinto(int dim)
         {
-            int nu = n;
-            Vertice <int> vertice1;
-            vertice1 = vertices->getElementInPos(nu);
-            vertice1.setVisit();
-            visitados->insert(vertice1);
-            nu++;
-            vecinos = obtenerListaNoVisit(vertice1);
-            LinkedList<Vertice<int> >::imprimirLista(vecinos);
-            if (nu < (laberinto->getCantVe()))
+            for (int i = 0; i < dim * dim; i++)
             {
-                llenarLaberinto(nu);
+                Vertice <int> tmp = grafoLleno->getVertices()->getElementInPos(i);
+                int x = tmp.getValor();
+                int i = getRandom();
+                if (i <= 50)
+                {
+                    if (x % dim != 0)
+                    {
+                        laberinto->agregarArista(x, (x+1));
+                        laberinto->agregarArista((x+1), x);
+                    }
+                }
+                else
+                {
+                    if ((x+dim) <= (dim*dim))
+                    {
+                        laberinto->agregarArista(x, (x+dim));
+                        laberinto->agregarArista((x+dim), x);
+                    }
+                }
             }
         }
 
@@ -94,6 +106,7 @@ class GrafoController
             vertice1 = vertices->getElementInPos(n);
             vertice1.setVisit();
             visitados->insert(vertice1);
+            visitadosDeVerdad->insert(vertice1);
             n++;
             DFSRec(vertice1, n);
             cout << "Despues de DFSREC" << endl;
@@ -113,6 +126,7 @@ class GrafoController
                 //vertice2 = obtenerAzar(vecinos);
                 vertice2 = vecinos->getElementInPos((vecinos->getSize()-1));
                 vertice2.setVisit();
+                visitadosDeVerdad->append(vertice2);
                 cout << "valor al inicio" << vertice1.getValor() << endl;
                 cout << "valor al inicio" << vertice2.getValor() << endl;
                 laberinto->agregarArista(vertice1.getValor(), vertice2.getValor());
@@ -120,7 +134,10 @@ class GrafoController
                 //LinkedList<Vertice<int> >::imprimirLista(vecinos);
                 cout << "Al final vertice uno es: " << vertice1.getValor() << " - " << vertice2.getValor() << endl;
                 vertice1.setValor(vertice2.getValor());
-                vertice1.resetVisit();
+                Vertice <int> vertice3;
+                vertice3 = vecinos->getElementInPos((vecinos->getSize()-1));
+                vertice2.setValor(vertice3.getValor());
+                //vertice1.resetVisit();
                 n++;
                 if (n < (vertices->getSize()-2))
                 {
@@ -146,7 +163,10 @@ class GrafoController
                     vertmp = tmp->getElementInPos(i);
                     if(vertmp.getEstado() == false)
                     {
-                        noVisitados->append(vertmp);
+                        if (visitadosDeVerdad->buscar(vertmp))
+                        {
+                            noVisitados->append(vertmp);
+                        }
                     }
                 }
             }

@@ -49,7 +49,8 @@ int main()
     // keys reader
     int KeyStroke;
     printer->init(dim*2*20);
-    printer->drawGraph(dim, controller->getGrafoLleno(), player); /* draw full graph */
+//    printer->drawGraph(dim, controller->getGrafoLleno(), player); /* draw full graph */
+    printer->drawGraph(dim, controller->getLaberinto(), player); /* draw labyrinth */
     while(KeyStroke != ESC){
         switch(KeyStroke){
         case UP_ARROW:
