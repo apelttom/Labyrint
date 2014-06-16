@@ -67,7 +67,7 @@ class LinkedList
             Node <E> * tmp;
             for (tmp = head; tmp->next != tail; tmp = tmp->next)
             {
-                cout<< tmp->next->element << endl;
+                //cout<< tmp->next->element << endl;
                 if (tmp->next->element == ele)
                 {
                     return true;

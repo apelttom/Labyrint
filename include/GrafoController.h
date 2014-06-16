@@ -27,6 +27,11 @@ class GrafoController
             return grafoLleno;
         }
 
+        Grafo <int> * getLaberinto() const
+        {
+            return laberinto;
+        }
+
         void inicializarGrafo(int dim)
         {
             for (int i = 1; i <= (dim*dim); i++)

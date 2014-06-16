@@ -33,7 +33,8 @@ int main()
     */
 
     GraphDrawer *  printer = new GraphDrawer();
-    printer->drawGraph(dim, controller->getGrafoLleno());
+    //printer->drawGraph(dim, controller->getLaberinto()); /* draw labyrint */
+    printer->drawGraph(dim, controller->getGrafoLleno()); /* draw full graph */
     delete printer;
 
     //ventana
