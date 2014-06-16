@@ -45,8 +45,8 @@ class GrafoController
             vertices = grafoLleno->getVertices();
             visitados = new LinkedList<Vertice<int> >();
             cout << "se lleno el grafo" << endl;
-            //DFS();
-            llenarLaberinto(0);
+            DFS();
+            //llenarLaberinto(0);
             cout << "se lleno el segundo grafo" << endl;
             cout << "listo" << endl;
             laberinto->imprimirListAd();
@@ -110,18 +110,19 @@ class GrafoController
             if (vecinos->getSize() > 0)
             {
                 cout << "Entro a if Recursivo" << endl;
-                vertice2 = obtenerAzar(vecinos);
+                //vertice2 = obtenerAzar(vecinos);
+                vertice2 = vecinos->getElementInPos((vecinos->getSize()-1));
                 vertice2.setVisit();
                 cout << "valor al inicio" << vertice1.getValor() << endl;
                 cout << "valor al inicio" << vertice2.getValor() << endl;
                 laberinto->agregarArista(vertice1.getValor(), vertice2.getValor());
                 //laberinto->agregarArista(vertice2.getValor(), vertice1.getValor());
                 //LinkedList<Vertice<int> >::imprimirLista(vecinos);
+                cout << "Al final vertice uno es: " << vertice1.getValor() << " - " << vertice2.getValor() << endl;
                 vertice1.setValor(vertice2.getValor());
                 vertice1.resetVisit();
-                cout << "Al final vertice uno es: " << vertice1.getValor() << " - " << vertice2.getValor() << endl;
                 n++;
-                if (n < (vertices->getSize()-1))
+                if (n < (vertices->getSize()-2))
                 {
                     DFSRec(vertice1, n);
                 }
