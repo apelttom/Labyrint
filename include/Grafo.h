@@ -3,6 +3,7 @@
 #include "Vertice.h"
 #include "Arista.h"
 #include "LinkedList.h"
+#include "Cell.h"
 #include <iostream>
 
 template <typename E>
@@ -157,6 +158,38 @@ class Grafo
                 LinkedList<Vertice<E> > * vecinos = obtenerVecinos(vertices->getElementInPos(i));
                 LinkedList<Vertice<E> >::imprimirLista(vecinos);
                 cout << endl;
+            }
+        }
+
+        bool validatePosition(Cell<E> * cell)
+        {
+            if(cell->isNode())  /* position is a node */
+            {
+                if(cell->getLastNodePos().getValor() < 0
+                   || cell->getLastNodePos().getValor() > (tamano*tamano))
+                {
+                    false;
+                }
+                true;
+            }else /* position is edge, check if exist */
+            {
+                aristas->goToStart();
+                while(aristas->getPos() != (aristas->getSize()))
+                {
+                    Arista<E> currEdge = aristas->getElement();
+                    int edgeSrc = currEdge.getOrigen().getValor();
+                    int edgeDst = currEdge.getDestino().getValor();
+
+                    if(cell->getEdgePos().getOrigen().getValor() == edgeSrc
+                       && cell->getEdgePos().getDestino().getValor() == edgeDst)
+                    {
+                        true;
+                    }
+                    // move to the next edge to check
+                    aristas->next();
+                }
+                // the position is on the edge that doesn't exist
+                false;
             }
         }
 

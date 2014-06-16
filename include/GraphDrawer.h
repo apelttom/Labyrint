@@ -110,6 +110,12 @@ public:
         getch();
         closegraph();
 	}
+
+    void drawPlayer(float pos)
+    {
+        //TODO implement player draw
+    }
+
 };
 
 #endif // GRAPHPRINTER_H_INCLUDED
