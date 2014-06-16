@@ -53,7 +53,7 @@ int main()
     while(KeyStroke != ESC){
         switch(KeyStroke){
         case UP_ARROW:
-            cout << "UP" << endl;
+//            cout << "UP" << endl;
             moveToValidate = player->getNextMove(UP);
             if(graph->validatePosition(moveToValidate))
             {
@@ -64,7 +64,7 @@ int main()
             }
             break;
         case DOWN_ARROW:
-            cout << "DOWN" << endl;
+//            cout << "DOWN" << endl;
             moveToValidate = player->getNextMove(DOWN);
             if(graph->validatePosition(moveToValidate))
             {
@@ -75,7 +75,7 @@ int main()
             }
             break;
         case LEFT_ARROW:
-            cout << "LEFT" << endl;
+//            cout << "LEFT" << endl;
             moveToValidate = player->getNextMove(LEFT);
             if(graph->validatePosition(moveToValidate))
             {
@@ -86,7 +86,7 @@ int main()
             }
             break;
         case RIGHT_ARROW:
-            cout << "RIGHT" << endl;
+//            cout << "RIGHT" << endl;
             moveToValidate = player->getNextMove(RIGHT);
             if(graph->validatePosition(moveToValidate))
             {
@@ -99,6 +99,11 @@ int main()
         }
     cleardevice();
     printer->drawGraph(dim, controller->getGrafoLleno(), player); /* draw full graph */
+    if(player->getPosition()->getLastNodePos().getValor() == dim*dim)
+    {
+        cout << "YOU HAVE WON THE GAME." << endl;
+        break;
+    }
     KeyStroke = _getch();
 //    delay(50);
     }

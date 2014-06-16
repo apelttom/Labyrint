@@ -109,18 +109,18 @@ private:
     {
         Cell<int> * nextMove = new Cell<int>(position->getLastNodePos().getValor());
 
-        cout << "Starting position: ";
+//        cout << "Starting position: ";
         if(position->isNode())
         {
-            cout << "Node: " << position->getLastNodePos() << endl;
+//            cout << "Node: " << position->getLastNodePos() << endl;
             nextMove->setEdgePos(newNode);
-            cout << "New position: " << nextMove->getEdgePos() << endl;
+//            cout << "New position: " << nextMove->getEdgePos() << endl;
             return nextMove;
         }else
         {
-            cout << "Edge: " << position->getEdgePos() << endl;
+//            cout << "Edge: " << position->getEdgePos() << endl;
             nextMove->setLastNodePos(newNode);
-            cout << "New position: " << nextMove->getLastNodePos() << endl;
+//            cout << "New position: " << nextMove->getLastNodePos() << endl;
             return nextMove;
         }
     }

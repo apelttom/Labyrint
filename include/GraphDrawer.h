@@ -55,6 +55,13 @@ public:
             rectangle(nodeLeftUpX,nodeLeftUpY,nodeRightDownX,nodeRightDownY);
             floodfill(nodeLeftUpX+1, nodeLeftUpY+1, COLOR);
 
+            if(currVertice == (dim*dim))
+            {
+                setcolor(2);
+                rectangle(nodeLeftUpX+5,nodeLeftUpY+5,nodeLeftUpX+15,nodeLeftUpY+15);
+                setcolor(COLOR);
+            }
+
             if(player->getPosition()->isNode())
             {
                 if(player->getPosition()->getLastNodePos().getValor() == currVertice)
