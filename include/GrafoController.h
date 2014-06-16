@@ -45,8 +45,10 @@ class GrafoController
             vertices = grafoLleno->getVertices();
             visitados = new LinkedList<Vertice<int> >();
             cout << "se lleno el grafo" << endl;
-            DFS();
+            //DFS();
+            llenarLaberinto(0);
             cout << "se lleno el segundo grafo" << endl;
+            cout << "listo" << endl;
             laberinto->imprimirListAd();
         }
 
@@ -66,6 +68,22 @@ class GrafoController
                     grafoLleno->agregarArista(x, (x+dim));
                     grafoLleno->agregarArista((x+dim), x);
                 }
+            }
+        }
+
+        void llenarLaberinto(int n)
+        {
+            int nu = n;
+            Vertice <int> vertice1;
+            vertice1 = vertices->getElementInPos(nu);
+            vertice1.setVisit();
+            visitados->insert(vertice1);
+            nu++;
+            vecinos = obtenerListaNoVisit(vertice1);
+            LinkedList<Vertice<int> >::imprimirLista(vecinos);
+            if (nu < (laberinto->getCantVe()))
+            {
+                llenarLaberinto(nu);
             }
         }
 
