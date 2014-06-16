@@ -63,6 +63,11 @@ class Grafo
             cantVertices++;
         }
 
+        LinkedList<Arista<E> > * getAristas() const
+        {
+            return aristas;
+        }
+
         void agregarVertice (E dato)
         {
             Vertice<E> * vert = new Vertice<E>();

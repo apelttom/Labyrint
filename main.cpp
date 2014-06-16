@@ -1,7 +1,8 @@
-#include <iostream>
-#include <winbgim.h>
-#include "GrafoController.h"
 
+#include <iostream>
+#include "include/Grafo.h"
+#include "include/GrafoController.h"
+#include "include/GraphDrawer.h"
 
 using namespace std;
 
@@ -31,10 +32,15 @@ int main()
     g->agregarArista(4, 4);
     */
 
+    GraphDrawer *  printer = new GraphDrawer();
+    //printer->drawGraph(dim, controller->getLaberinto()); /* draw labyrint */
+    printer->drawGraph(dim, controller->getGrafoLleno()); /* draw full graph */
+    delete printer;
 
     //ventana
-    initwindow (600,400);
-    getch();
-    closegraph();
+//    initwindow (600,400);
+//    rectangle(0,0,20,20);
+//    getch();
+//    closegraph();
     return 0;
 }
