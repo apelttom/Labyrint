@@ -27,49 +27,101 @@ public:
         return position;
     }
 
+    void setPosition(Cell<int> * dstPos)
+    {
+        delete position;
+        position = dstPos;
+    }
+
     Cell<int> * getNextMove(direction dst)
     {
         int lastNode = position->getLastNodePos().getValor();
         switch(dst){
         case UP:
-            return createNexMove(lastNode-dimension);
+            if(position->isNode())
+            {
+                return createNexMove(lastNode-dimension);
+            }else
+            {
+                int nextNode = position->getEdgePos().getDestino().getValor();
+                if(lastNode < nextNode)
+                {
+                    return createNexMove(lastNode);
+                }else
+                {
+                    return createNexMove(nextNode);
+                }
+            }
+            break;
         case DOWN:
-            return createNexMove(lastNode+dimension);
+            if(position->isNode())
+            {
+                return createNexMove(lastNode+dimension);
+            }else
+            {
+                int nextNode = position->getEdgePos().getDestino().getValor();
+                if(lastNode > nextNode)
+                {
+                    return createNexMove(lastNode);
+                }else
+                {
+                    return createNexMove(nextNode);
+                }
+            }
+            break;
         case LEFT:
-            return createNexMove(lastNode-1);
+            if(position->isNode())
+            {
+                return createNexMove(lastNode-1);
+            }else
+            {
+                int nextNode = position->getEdgePos().getDestino().getValor();
+                if(lastNode < nextNode)
+                {
+                    return createNexMove(lastNode);
+                }else
+                {
+                    return createNexMove(nextNode);
+                }
+            }
+            break;
         case RIGHT:
-            return createNexMove(lastNode+1);
+            if(position->isNode())
+            {
+                return createNexMove(lastNode+1);
+            }else
+            {
+                int nextNode = position->getEdgePos().getDestino().getValor();
+                if(lastNode > nextNode)
+                {
+                    return createNexMove(lastNode);
+                }else
+                {
+                    return createNexMove(nextNode);
+                }
+            }
         }
-//        if(dst == UP) return createNexMove(lastNode-dimension);
-//        if(dst == DOWN) return createNexMove(lastNode+dimension);
-//        if(dst == LEFT) return createNexMove(lastNode-1);
-//        if(dst == RIGHT) return createNexMove(lastNode+1);
-        //TODO change for position
-        cout << "NO CASE STATEMENT WAS CAUGHT!" << endl;
-        return NULL;
+        return position;
     }
 
 private:
     Cell<int> * createNexMove(int newNode)
     {
-        Cell<int> * result = new Cell<int>(3);
+        Cell<int> * nextMove = new Cell<int>(position->getLastNodePos().getValor());
 
         cout << "Starting position: ";
         if(position->isNode())
         {
             cout << "Node: " << position->getLastNodePos() << endl;
-//            position->setEdgePos(newNode);
-            cout << "New position: " << position->getEdgePos() << endl;
-            cout << "Next move: " << result->getLastNodePos() << endl;
-            //result->setEdgePos(newNode);
-            return result;
+            nextMove->setEdgePos(newNode);
+            cout << "New position: " << nextMove->getEdgePos() << endl;
+            return nextMove;
         }else
         {
             cout << "Edge: " << position->getEdgePos() << endl;
-//            position->setLastNodePos(newNode);
-            cout << "New position: " << position->getLastNodePos() << endl;
-            result->setLastNodePos(newNode);
-            return result;
+            nextMove->setLastNodePos(newNode);
+            cout << "New position: " << nextMove->getLastNodePos() << endl;
+            return nextMove;
         }
     }
 };

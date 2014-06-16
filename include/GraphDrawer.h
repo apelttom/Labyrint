@@ -3,6 +3,7 @@
 
 #include <winbgim.h>
 #include "Grafo.h"
+#include "Player.h"
 
 const int CELL_SIZE = 20;
 const int OFFSET = 9; /* Has to be < CELL_SIZE */
@@ -17,10 +18,14 @@ public:
     GraphDrawer(){}
     ~GraphDrawer(){}
 
-	void drawGraph(int dim, Grafo<int> * graph)
+    void init(int sizeOfBoard)
+    {
+        initwindow(sizeOfBoard+OFFSET,sizeOfBoard+OFFSET);
+    }
+
+	void drawGraph(int dim, Grafo<int> * graph, Player * player)
 	{
 	    int sizeOfBoard = dim*2*CELL_SIZE;
-	    initwindow(sizeOfBoard+OFFSET,sizeOfBoard+OFFSET);
 	    setcolor(COLOR);
 	    LinkedList<Vertice<int> > * vertices = graph->getVertices();
         LinkedList<Arista<int> > * edges = graph->getAristas();
@@ -50,6 +55,16 @@ public:
             rectangle(nodeLeftUpX,nodeLeftUpY,nodeRightDownX,nodeRightDownY);
             floodfill(nodeLeftUpX+1, nodeLeftUpY+1, COLOR);
 
+            if(player->getPosition()->isNode())
+            {
+                if(player->getPosition()->getLastNodePos().getValor() == currVertice)
+                {
+                    setcolor(4);
+                    rectangle(nodeLeftUpX+5,nodeLeftUpY+5,nodeLeftUpX+15,nodeLeftUpY+15);
+                    setcolor(COLOR);
+                }
+            }
+
             // have we already drawed all edges?
             if(edges->getPos() != (edges->getSize()))
             {
@@ -70,6 +85,20 @@ public:
                     // draw the rectangle and fill it with white
                     rectangle(edgeLeftUpX,edgeLeftUpY,edgeRightDownX,edgeRightDownY);
                     floodfill(edgeLeftUpX+1, edgeLeftUpY+1, COLOR);
+
+                    if(!player->getPosition()->isNode())
+                    {
+                        if((player->getPosition()->getEdgePos().getOrigen().getValor() == edgeSrc.getValor()
+                           &&player->getPosition()->getEdgePos().getDestino().getValor() == edgeDst.getValor())
+                           ||
+                           (player->getPosition()->getEdgePos().getOrigen().getValor() == edgeDst.getValor()
+                           &&player->getPosition()->getEdgePos().getDestino().getValor() == edgeSrc.getValor()))
+                        {
+                            setcolor(4);
+                            rectangle(edgeLeftUpX+5,edgeLeftUpY+5,edgeLeftUpX+15,edgeLeftUpY+15);
+                            setcolor(COLOR);
+                        }
+                    }
 
                     // move to the next edge. Edges are duplicated, so we move twice
                     edges->next();
@@ -99,6 +128,20 @@ public:
                         rectangle(edgeLeftUpX,edgeLeftUpY,edgeRightDownX,edgeRightDownY);
                         floodfill(edgeLeftUpX+1, edgeLeftUpY+1, COLOR);
 
+                        if(!player->getPosition()->isNode())
+                        {
+                            if((player->getPosition()->getEdgePos().getOrigen().getValor() == edgeSrc.getValor()
+                               &&player->getPosition()->getEdgePos().getDestino().getValor() == edgeDst.getValor())
+                               ||
+                               (player->getPosition()->getEdgePos().getOrigen().getValor() == edgeDst.getValor()
+                               &&player->getPosition()->getEdgePos().getDestino().getValor() == edgeSrc.getValor()))
+                            {
+                                setcolor(4);
+                                rectangle(edgeLeftUpX+5,edgeLeftUpY+5,edgeLeftUpX+15,edgeLeftUpY+15);
+                                setcolor(COLOR);
+                            }
+                        }
+
                         // move to the next edge. Edges are duplicated, so we move twice
                         edges->next();
                         edges->next();
@@ -107,14 +150,13 @@ public:
             }
             vertices->next();
         }
-        getch();
-        closegraph();
-	}
+//        setcolor(4);
+//        rectangle(playerleftUpX,playerleftUpY,playerleftUpX+10,playerleftUpY+10);
+//        floodfill(30+1, 30+1, 4);
 
-    void drawPlayer(float pos)
-    {
-        //TODO implement player draw
-    }
+//        getch();
+//        closegraph();
+	}
 
 };
 

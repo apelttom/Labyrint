@@ -38,81 +38,81 @@ int main()
     g->agregarArista(4, 4);
     */
 
-    //GraphDrawer *  printer = new GraphDrawer();
-    //printer->drawGraph(dim, controller->getLaberinto()); /* draw labyrint */
-    //printer->drawGraph(dim, controller->getGrafoLleno()); /* draw full graph */
-    //delete printer;
-
     // graph
     Grafo<int> * graph = controller->getGrafoLleno();
+    GraphDrawer *  printer = new GraphDrawer();
     // player
     Player * player = new Player(dim);
 
-//    Cell<int> * moveToValidate = player->getNextMove(DOWN);
-    //if(graph->validatePosition(moveToValidate))
-//    if(true)
-//            {
-//                cout << "This is valid move" << endl;
-//            }else
-//            {
-//                cout << "NOT a valid move" << endl;
-//            }
-    // keys reader
-//    int KeyStroke;
-//    while((KeyStroke = _getch()) != ESC){
-//        switch(KeyStroke){
-//        case UP_ARROW:
-//            cout << "UP" << endl;
-//            moveToValidate = player->getNextMove(UP);
-//            if(graph->validatePosition(moveToValidate))
-//            {
-//                cout << "This is valid move" << endl;
-//            }else
-//            {
-//                cout << "NOT a valid move" << endl;
-//            }
-//            break;
-//        case DOWN_ARROW:
-//            cout << "DOWN" << endl;
-//            moveToValidate = player->getNextMove(DOWN);
-//            if(graph->validatePosition(moveToValidate))
-//            {
-//                cout << "This is valid move" << endl;
-//            }else
-//            {
-//                cout << "NOT a valid move" << endl;
-//            }
-//            break;
-//        case LEFT_ARROW:
-//            cout << "LEFT" << endl;
-//            moveToValidate = player->getNextMove(LEFT);
-//            if(graph->validatePosition(moveToValidate))
-//            {
-//                cout << "This is valid move" << endl;
-//            }else
-//            {
-//                cout << "NOT a valid move" << endl;
-//            }
-//            break;
-//        case RIGHT_ARROW:
-//            cout << "RIGHT" << endl;
-//            moveToValidate = player->getNextMove(RIGHT);
-//            if(graph->validatePosition(moveToValidate))
-//            {
-//                cout << "This is valid move" << endl;
-//            }else
-//            {
-//                cout << "NOT a valid move" << endl;
-//            }
-//            break;
-//        }
-//    }
 
+    Cell<int> * moveToValidate;
+    // keys reader
+    int KeyStroke;
+    printer->init(dim*2*20);
+    printer->drawGraph(dim, controller->getGrafoLleno(), player); /* draw full graph */
+    while(KeyStroke != ESC){
+        switch(KeyStroke){
+        case UP_ARROW:
+            cout << "UP" << endl;
+            moveToValidate = player->getNextMove(UP);
+            if(graph->validatePosition(moveToValidate))
+            {
+                player->setPosition(moveToValidate);
+            }else
+            {
+                cout << "NOT a valid move" << endl;
+            }
+            break;
+        case DOWN_ARROW:
+            cout << "DOWN" << endl;
+            moveToValidate = player->getNextMove(DOWN);
+            if(graph->validatePosition(moveToValidate))
+            {
+                player->setPosition(moveToValidate);
+            }else
+            {
+                cout << "NOT a valid move" << endl;
+            }
+            break;
+        case LEFT_ARROW:
+            cout << "LEFT" << endl;
+            moveToValidate = player->getNextMove(LEFT);
+            if(graph->validatePosition(moveToValidate))
+            {
+                player->setPosition(moveToValidate);
+            }else
+            {
+                cout << "NOT a valid move" << endl;
+            }
+            break;
+        case RIGHT_ARROW:
+            cout << "RIGHT" << endl;
+            moveToValidate = player->getNextMove(RIGHT);
+            if(graph->validatePosition(moveToValidate))
+            {
+                player->setPosition(moveToValidate);
+            }else
+            {
+                cout << "NOT a valid move" << endl;
+            }
+            break;
+        }
+    cleardevice();
+    printer->drawGraph(dim, controller->getGrafoLleno(), player); /* draw full graph */
+    KeyStroke = _getch();
+//    delay(50);
+    }
+
+//    printer->drawGraph(dim, controller->getLaberinto()); /* draw labyrint */
+    delete graph;
+    delete printer;
+    delete player;
+    delete moveToValidate;
+    closegraph();
 
     //ventana
 //    initwindow (600,400);
 //    rectangle(0,0,20,20);
 //    getch();
-//    closegraph();
     return 0;
 }

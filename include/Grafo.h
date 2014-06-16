@@ -165,31 +165,36 @@ class Grafo
         {
             if(cell->isNode())  /* position is a node */
             {
+//                cout << "position to be checked is node" << endl;
                 if(cell->getLastNodePos().getValor() < 0
                    || cell->getLastNodePos().getValor() > (tamano*tamano))
                 {
-                    false;
+                    return false;
                 }
-                true;
+                return true;
             }else /* position is edge, check if exist */
             {
+//                cout << "position to be checked is edge" << endl;
                 aristas->goToStart();
                 while(aristas->getPos() != (aristas->getSize()))
                 {
                     Arista<E> currEdge = aristas->getElement();
                     int edgeSrc = currEdge.getOrigen().getValor();
                     int edgeDst = currEdge.getDestino().getValor();
+                    int posSrc = cell->getEdgePos().getOrigen().getValor();
+                    int posDst = cell->getEdgePos().getDestino().getValor();
 
-                    if(cell->getEdgePos().getOrigen().getValor() == edgeSrc
-                       && cell->getEdgePos().getDestino().getValor() == edgeDst)
+                    if(posSrc == edgeSrc && posDst == edgeDst)
                     {
-                        true;
+                        return true;
                     }
+//                    cout << "To validate: (" << posSrc << "," << posDst
+//                    << ")\nAgainst: (" << edgeSrc << "," << edgeDst << ")" << endl;
                     // move to the next edge to check
                     aristas->next();
                 }
                 // the position is on the edge that doesn't exist
-                false;
+                return false;
             }
         }
 
